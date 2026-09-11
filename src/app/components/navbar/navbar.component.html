@@ -1,0 +1,24 @@
+<header class="navbar">
+  <div class="navbar__brand" routerLink="/">
+    <i class="fa-solid fa-paw navbar__logo-icon"></i>
+    <span class="navbar__brand-name">PetShop</span>
+  </div>
+
+  <button class="navbar__toggle" (click)="toggleMenu()" aria-label="Abrir menú">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <nav class="navbar__links" [class.is-open]="menuOpen">
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Inicio</a>
+    <a routerLink="/nosotros" routerLinkActive="active">Nosotros</a>
+    <a routerLink="/mascotas" routerLinkActive="active">Mascotas</a>
+    <a routerLink="/clientes" routerLinkActive="active">Clientes</a>
+    <a routerLink="/adopciones" routerLinkActive="active">Adopciones</a>
+    <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
+  </nav>
+
+  <div class="navbar__actions">
+    <i class="fa-solid fa-magnifying-glass navbar__icon"></i>
+    <i class="fa-solid fa-circle-user navbar__icon"></i>
+  </div>
+</header>

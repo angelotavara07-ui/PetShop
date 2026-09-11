@@ -1,0 +1,24 @@
+<section class="hero">
+  <div class="hero__content">
+    <h1 class="hero__title">Hogar temporal,<br/>para un gran futuro</h1>
+    <p class="hero__subtitle">Adopta, cuida, cambia una vida</p>
+    <button class="btn-primary hero__cta">Conoce más</button>
+  </div>
+  <div class="hero__image">
+    <img src="assets/img/hero-pets.jpg" alt="Perro y gato en adopción" />
+  </div>
+</section>
+
+<section class="features">
+    <a
+    *ngFor="let f of features"
+    class="feature-card"
+    [routerLink]="f.route"
+  >
+    <div class="feature-card__icon" [ngClass]="'feature-card__icon--' + f.color">
+      <i [class]="f.icon"></i>
+    </div>
+    <h3 class="feature-card__title">{{ f.title }}</h3>
+    <p class="feature-card__subtitle">{{ f.subtitle }}</p>
+  </a>
+</section>
