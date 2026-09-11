@@ -1,0 +1,41 @@
+.ps-fade-in {
+  animation: fadeIn 0.4s ease;
+}
+
+.ps-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04) !important;
+  overflow: hidden;
+}
+
+.font-sm {
+  font-size: 0.85rem;
+}
+
+/* Banner de la derecha */
+.ps-banner-bg {
+  background-color: var(--ps-bg);
+  border-left: 1px solid var(--ps-border);
+}
+
+@media (max-width: 991.98px) {
+  .ps-banner-bg {
+    border-left: none;
+    border-bottom: 1px solid var(--ps-border);
+  }
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.invalid-feedback {
+  font-size: 0.75rem;
+  color: var(--ps-danger-text);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

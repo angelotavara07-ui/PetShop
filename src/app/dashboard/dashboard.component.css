@@ -1,0 +1,98 @@
+.ps-dashboard {
+  animation: fadeIn 0.4s ease;
+}
+
+.ps-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ps-card:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Typographic helpers */
+.font-sm {
+  font-size: 0.85rem;
+}
+
+/* Badges */
+.ps-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.ps-badge-success { background-color: var(--ps-success-bg); color: var(--ps-success-text); }
+.ps-badge-warning { background-color: var(--ps-warning-bg); color: var(--ps-warning-text); }
+.ps-badge-danger { background-color: var(--ps-danger-bg); color: var(--ps-danger-text); }
+
+/* Table styling */
+.ps-table th {
+  border-bottom: 2px solid var(--ps-border);
+  letter-spacing: 0.03em;
+}
+.ps-table td {
+  padding: 1rem 0.5rem;
+  border-bottom: 1px solid var(--ps-bg);
+}
+.ps-table tr:hover td {
+  background-color: rgba(248, 250, 252, 0.5);
+}
+
+/* Icon circles & Avatars */
+.ps-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.ps-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Action buttons */
+.btn-action {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.btn-action:hover {
+  transform: scale(1.1);
+}
+
+/* Overlay / Modal */
+.ps-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(15, 59, 87, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}

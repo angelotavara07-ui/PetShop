@@ -1,1 +1,61 @@
-/* You can add global styles to this file, and also import other style files */
+/* Estilos Globales PetShop */
+:root {
+  --ps-primary: #0f3b57;       /* Azul oscuro Navbar */
+  --ps-primary-light: #185a85;
+  --ps-accent: #2563eb;        /* Azul botones */
+  --ps-accent-hover: #1d4ed8;
+  
+  --ps-bg: #f8fafc;            /* Fondo general claro */
+  --ps-surface: #ffffff;       /* Fondo de tarjetas */
+  
+  --ps-success-bg: #d1fae5;    /* Verde pastel */
+  --ps-success-text: #065f46;
+  --ps-warning-bg: #fef3c7;    /* Ámbar pastel */
+  --ps-warning-text: #92400e;
+  --ps-danger-bg: #fee2e2;     /* Rosa pastel */
+  --ps-danger-text: #991b1b;
+
+  --ps-text-main: #1e293b;
+  --ps-text-muted: #64748b;
+  --ps-border: #e2e8f0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--ps-bg);
+  color: var(--ps-text-main);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Modificadores globales para inputs y botones (Soft UI) */
+.form-control, .form-select {
+  border: 1px solid var(--ps-border);
+  border-radius: 12px;
+  padding: 0.65rem 1rem;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background-color: #fbfbfc;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #93c5fd;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+  background-color: #fff;
+}
+
+.btn {
+  border-radius: 10px;
+  font-weight: 500;
+  padding: 0.6rem 1.2rem;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background-color: var(--ps-accent);
+  border-color: var(--ps-accent);
+}
+.btn-primary:hover {
+  background-color: var(--ps-accent-hover);
+  border-color: var(--ps-accent-hover);
+  transform: translateY(-1px);
+}

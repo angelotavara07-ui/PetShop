@@ -1,0 +1,117 @@
+<div class="container py-5 ps-fade-in">
+  <!-- Encabezado Limpio -->
+  <div class="mb-4 text-center text-md-start">
+    <div class="d-inline-flex align-items-center justify-content-center bg-primary bg-opacity-10 text-primary rounded-circle p-3 mb-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-person-heart" viewBox="0 0 16 16"><path d="M9 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm-9 8c0 1 1 1 1 1h10s1 0 1-1-1-4-6-4-6 3-6 4Zm13.5-8.09c1.387-1.425 4.855 1.07 0 4.277-4.854-3.207-1.387-5.702 0-4.276Z"/></svg>
+    </div>
+    <h2 class="fw-bold" style="color: var(--ps-primary);">Registro de Clientes</h2>
+    <p class="text-muted">Añade nuevos adoptantes a nuestra familia PetShop.</p>
+  </div>
+
+  @if (registroExitoso) {
+    <div class="alert alert-success d-flex align-items-center gap-3 ps-card mb-4 border-0" role="alert">
+      <div class="ps-icon-circle bg-success bg-opacity-25 text-success" style="width: 32px; height: 32px;">✓</div>
+      <strong>¡Cliente registrado exitosamente!</strong>
+    </div>
+  }
+
+  <div class="card ps-card border-0">
+    <div class="row g-0">
+      <!-- Columna Formulario (Izquierda) -->
+      <div class="col-lg-8 p-4 p-md-5">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+          <div class="row g-4">
+            
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Nombres <span class="text-danger">*</span></label>
+              <input type="text" formControlName="nombres" placeholder="Ej. Juan Carlos" class="form-control" [class.is-invalid]="fieldInvalid('nombres')"/>
+              @if (fieldInvalid('nombres')) {
+                <div class="invalid-feedback">Obligatorio (mínimo 2 caract.)</div>
+              }
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Apellidos <span class="text-danger">*</span></label>
+              <input type="text" formControlName="apellidos" placeholder="Ej. Pérez García" class="form-control" [class.is-invalid]="fieldInvalid('apellidos')"/>
+              @if (fieldInvalid('apellidos')) {
+                <div class="invalid-feedback">Obligatorio (mínimo 2 caract.)</div>
+              }
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">DNI <span class="text-danger">*</span></label>
+              <input type="text" formControlName="dni" placeholder="8 dígitos" maxlength="8" class="form-control" [class.is-invalid]="fieldInvalid('dni')"/>
+              @if (fieldInvalid('dni')) {
+                <div class="invalid-feedback">Debe contener 8 dígitos numéricos.</div>
+              }
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Teléfono <span class="text-danger">*</span></label>
+              <input type="text" formControlName="telefono" placeholder="9 dígitos" maxlength="9" class="form-control" [class.is-invalid]="fieldInvalid('telefono')"/>
+              @if (fieldInvalid('telefono')) {
+                <div class="invalid-feedback">Debe contener 9 dígitos numéricos.</div>
+              }
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Correo electrónico <span class="text-danger">*</span></label>
+              <input type="email" formControlName="correo" placeholder="correo@ejemplo.com" class="form-control" [class.is-invalid]="fieldInvalid('correo')"/>
+              @if (fieldInvalid('correo')) {
+                <div class="invalid-feedback">Formato de correo inválido.</div>
+              }
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Dirección <span class="text-danger">*</span></label>
+              <input type="text" formControlName="direccion" placeholder="Ej. Av. Principal 123" class="form-control" [class.is-invalid]="fieldInvalid('direccion')"/>
+              @if (fieldInvalid('direccion')) {
+                <div class="invalid-feedback">La dirección es obligatoria.</div>
+              }
+            </div>
+            
+          </div>
+
+          <div class="mt-5 d-flex gap-3">
+            <button type="submit" class="btn btn-primary px-5 py-2" [disabled]="form.invalid">Registrar</button>
+            <button type="button" class="btn btn-light border px-4 py-2" (click)="form.reset()">Limpiar</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Columna Banner (Derecha) -->
+      <div class="col-lg-4 ps-banner-bg d-none d-lg-flex flex-column justify-content-center align-items-center text-center p-4 p-xl-5 position-relative overflow-hidden">
+  
+  <!-- Pill superior decorativo -->
+  <span class="ps-badge-pill mb-3">
+    🐾 Comunidad PetShop
+  </span>
+
+  <!-- Frase principal -->
+  <h4 class="fw-bold mb-4" style="color: var(--ps-primary); font-size: 1.45rem; line-height: 1.35;">
+    Nuestros clientes también son parte de la familia
+  </h4>
+
+  <!-- Galería CSS Grid debajo de la frase -->
+  <div class="ps-client-grid w-100">
+    <!-- Imagen Principal (Izquierda) -->
+    <div class="grid-item item-main">
+      <img src="/img/pexels-98931356-10057008.jpg" alt="Cliente con perro">
+    </div>
+
+    <!-- Imagen Secundaria (Derecha superpuesta) -->
+    <div class="grid-item item-secondary">
+      <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?auto=format&fit=crop&q=80&w=500" alt="Mascota mimada">
+    </div>
+
+    <!-- Badge flotante con desenfoque de fondo -->
+    <div class="grid-float-badge">
+      <span class="fs-6"></span>
+      <span class="fw-semibold text-dark small ms-1">+100 Adopciones</span>
+    </div>
+  </div>
+
+</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,111 @@
+<div class="container py-5 ps-fade-in">
+  
+  <!-- Encabezado Limpio -->
+  <div class="mb-4 text-center text-md-start">
+    <div class="d-inline-flex align-items-center justify-content-center bg-warning bg-opacity-10 text-warning-emphasis rounded-circle p-3 mb-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house-heart" viewBox="0 0 16 16"><path d="M8 6.982C9.664 5.309 13.825 8.236 8 12 2.175 8.236 6.336 5.309 8 6.982Z"/><path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.707L2 8.207V13.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V8.207l.646.646a.5.5 0 0 0 .708-.707L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5ZM13 7.207V13.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V7.207l5-5 5 5Z"/></svg>
+    </div>
+    <h2 class="fw-bold" style="color: var(--ps-primary);">Solicitud de Adopción</h2>
+    <p class="text-muted">Inicia el proceso para brindarle un hogar a una mascota.</p>
+  </div>
+
+  @if (registroExitoso) {
+    <div class="alert alert-success d-flex align-items-center gap-3 ps-card mb-4 border-0" role="alert">
+      <div class="ps-icon-circle bg-success bg-opacity-25 text-success" style="width: 32px; height: 32px;">✓</div>
+      <div>
+        <strong>¡Solicitud enviada exitosamente!</strong>
+        <span class="d-block text-muted font-sm">Estado actual: <span class="badge bg-warning text-dark ms-1">Pendiente</span></span>
+      </div>
+    </div>
+  }
+
+  <div class="card ps-card border-0">
+    <div class="row g-0 flex-column-reverse flex-lg-row">
+      <!-- Columna Formulario (Izquierda) -->
+      <div class="col-lg-8 p-4 p-md-5">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+          <div class="row g-4">
+            
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Cliente <span class="text-danger">*</span></label>
+              <select formControlName="clienteId" class="form-select" [class.is-invalid]="fieldInvalid('clienteId')">
+                <option [ngValue]="null" disabled>Selecciona un cliente</option>
+                @for (c of clientes; track c.id) {
+                  <option [value]="c.id">{{ c.nombres }} {{ c.apellidos }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Mascota <span class="text-danger">*</span></label>
+              <select formControlName="mascotaId" class="form-select" [class.is-invalid]="fieldInvalid('mascotaId')">
+                <option [ngValue]="null" disabled>Selecciona una mascota</option>
+                @for (m of mascotas; track m.id) {
+                  <option [value]="m.id">{{ m.nombre }} ({{ m.especie }})</option>
+                }
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Fecha de solicitud <span class="text-danger">*</span></label>
+              <input type="date" formControlName="fechaSolicitud" class="form-control" [class.is-invalid]="fieldInvalid('fechaSolicitud')"/>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Correo electrónico <span class="text-danger">*</span></label>
+              <input type="email" formControlName="correo" placeholder="correo@ejemplo.com" class="form-control" [class.is-invalid]="fieldInvalid('correo')"/>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Tipo de vivienda <span class="text-danger">*</span></label>
+              <select formControlName="tipoVivienda" class="form-select" [class.is-invalid]="fieldInvalid('tipoVivienda')">
+                <option [ngValue]="null" disabled>Selecciona tipo de vivienda</option>
+                @for (tipo of tiposVivienda; track tipo) {
+                  <option [value]="tipo">{{ tipo }}</option>
+                }
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="form-label fw-medium text-muted font-sm">Motivo de adopción <span class="text-danger">*</span></label>
+              <select formControlName="motivo" class="form-select" [class.is-invalid]="fieldInvalid('motivo')">
+                <option value="" disabled>Selecciona motivo</option>
+                <option value="Compañía para la familia">Compañía para la familia</option>
+                <option value="Tengo experiencia previa">Tengo experiencia previa</option>
+                <option value="Espacio grande disponible">Espacio grande disponible</option>
+                <option value="Quiero darle una segunda oportunidad">Quiero darle una segunda oportunidad</option>
+              </select>
+            </div>
+
+            <div class="col-12">
+              <label class="form-label fw-medium text-muted font-sm">Observaciones</label>
+              <textarea formControlName="observaciones" rows="2" placeholder="Escribe una breve descripción..." class="form-control"></textarea>
+            </div>
+            
+          </div>
+
+          <div class="mt-5 d-flex gap-3">
+            <button type="submit" class="btn btn-primary px-5 py-2">Enviar solicitud</button>
+            <button type="button" class="btn btn-light border px-4 py-2" (click)="form.reset({ fechaSolicitud: '' })">Limpiar</button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Columna Banner (Derecha) -->
+      <div class="col-lg-4 ps-banner-bg d-flex flex-column justify-content-center align-items-center text-center p-5 position-relative overflow-hidden">
+        
+        <!-- Elemento visual decorativo (Perro/Gato simulado con CSS/Iconos) -->
+        <div class="mb-4 position-relative d-inline-block">
+          <div class="bg-white rounded-4 shadow-sm p-3 mb-3 d-flex gap-2 align-items-center justify-content-center" style="width: 140px; height: 100px;">
+            <span class="fs-1">🐶</span>
+            <span class="fs-2">🐱</span>
+          </div>
+          <div class="position-absolute top-0 start-100 translate-middle text-danger fs-3" style="margin-left: -10px; margin-top: -10px;">♥</div>
+        </div>
+        
+        <h3 class="fw-bold px-3 lh-base" style="color: var(--ps-primary);">Adoptar es dar una segunda oportunidad</h3>
+        <p class="text-muted mt-2 font-sm px-3">Gracias por abrir las puertas de tu hogar.</p>
+      </div>
+    </div>
+  </div>
+</div>
