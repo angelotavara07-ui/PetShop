@@ -1,12 +1,37 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './pages/home/home.component';
 
 export const routes: Routes = [
+
   {
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
   },
+
+  {
+    path: 'inicio',
+    loadComponent: () =>
+      import('./pages/home/home.component').then(
+        (m) => m.HomeComponent
+      ),
+  },
+
+  {
+    path: 'nosotros',
+    loadComponent: () =>
+      import('./pages/about/about.component').then(
+        (m) => m.AboutComponent
+      ),
+  },
+
+  {
+    path: 'mascotas',
+    loadComponent: () =>
+      import('./pages/pet-form/pet-form.component').then(
+        (m) => m.PetFormComponent
+      ),
+  },
+
   {
     path: 'clientes/registro',
     loadComponent: () =>
@@ -14,6 +39,7 @@ export const routes: Routes = [
         (m) => m.RegistroClienteComponent
       ),
   },
+
   {
     path: 'adopciones/solicitud',
     loadComponent: () =>
@@ -21,6 +47,7 @@ export const routes: Routes = [
         (m) => m.SolicitudAdopcionComponent
       ),
   },
+
   {
     path: 'dashboard',
     loadComponent: () =>
@@ -28,9 +55,10 @@ export const routes: Routes = [
         (m) => m.DashboardComponent
       ),
   },
+
   {
     path: '**',
     redirectTo: 'dashboard',
   },
-];
 
+];
