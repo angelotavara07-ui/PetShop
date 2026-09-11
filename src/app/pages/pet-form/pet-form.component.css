@@ -1,0 +1,251 @@
+.ps-fade-in {
+  animation: fadeIn 0.4s ease;
+}
+
+.ps-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04) !important;
+  overflow: hidden;
+}
+
+.font-sm {
+  font-size: 0.85rem;
+}
+
+/* Layout principal */
+
+.pet-form-page {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 0;
+  margin: 1.5rem;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Formulario */
+
+.pet-form {
+  padding: 2rem;
+}
+
+.pet-form__title {
+  margin: 0 0 0.4rem 0;
+  color: #2563eb;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.pet-form__subtitle {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin-bottom: 1.8rem;
+}
+
+.required {
+  color: #e74c3c;
+}
+
+/* Filas del formulario */
+
+.form-row {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.form-group--edad,
+.form-group--sexo {
+  flex: 1;
+}
+
+/* Inputs */
+
+.pet-form input,
+.pet-form select,
+.pet-form textarea {
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  padding: 0.65rem 0.8rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pet-form input:focus,
+.pet-form select:focus,
+.pet-form textarea:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+  outline: none;
+}
+
+/* Edad */
+
+.input-with-suffix {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.input-with-suffix input {
+  flex: 1;
+}
+
+.suffix {
+  color: #6b7280;
+  font-size: 0.85rem;
+}
+
+/* Radios */
+
+.radio-group {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.4rem;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.radio-option input {
+  width: auto;
+  accent-color: #2563eb;
+}
+
+/* Botones */
+
+.pet-form__actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.8rem;
+}
+
+.pet-form__actions button {
+  border-radius: 10px;
+  padding: 0.65rem 1.2rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.pet-form__actions button:hover {
+  transform: translateY(-2px);
+}
+
+/* Mensaje */
+
+.pet-form__success {
+  margin-top: 1rem;
+  color: #22c55e;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Banner derecho */
+
+.pet-preview {
+  background-color: #f8fafc;
+  border-left: 1px solid #e5e7eb;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Imagen */
+
+.pet-preview__img {
+  width: 85%;
+  max-width: 320px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 20px;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  transform: rotate(2deg);
+  transition: transform 0.3s ease;
+}
+
+.pet-preview__img:hover {
+  transform: rotate(0deg) scale(1.03);
+}
+
+/* Icono */
+
+.pet-preview__icon {
+  color: #2563eb;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Texto */
+
+.pet-preview__text {
+  color: #6b7280;
+  font-size: 0.9rem;
+  margin: 0;
+  max-width: 300px;
+  line-height: 1.5;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .pet-form-page {
+    grid-template-columns: 1fr;
+  }
+
+  .pet-preview {
+    border-left: none;
+    border-top: 1px solid #e5e7eb;
+  }
+}
+
+@media (max-width: 600px) {
+  .pet-form-page {
+    margin: 1rem;
+  }
+
+  .pet-form {
+    padding: 1.3rem;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .pet-form__actions {
+    flex-direction: column;
+  }
+
+  .pet-form__actions button {
+    width: 100%;
+  }
+
+  .pet-preview {
+    padding: 1.5rem;
+  }
+
+  .pet-preview__img {
+    width: 100%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,36 @@
+<section class="about-hero">
+  <h1 class="about-hero__title">Sobre PetShop</h1>
+  <p class="about-hero__subtitle">
+    Amor en cada huella. Conectamos mascotas con familias que les darán un hogar para siempre.
+  </p>
+</section>
+
+<section class="about-story card">
+  <h2>Nuestra historia</h2>
+  <p>
+    PetShop nació con el propósito de modernizar la forma en que las familias adoptan,
+    cuidan y registran a sus mascotas. Actualmente gestionamos venta de mascotas,
+    servicios veterinarios, accesorios y procesos de adopción, todo bajo un mismo sistema
+    pensado para simplificar la experiencia tanto de clientes como del equipo interno.
+  </p>
+</section>
+
+<section class="about-values">
+  <h2 class="section-title">Nuestros valores</h2>
+  <div class="values-grid">
+    <div class="value-card card" *ngFor="let v of values">
+      <div class="value-card__icon">
+        <i [class]="v.icon"></i>
+      </div>
+      <h3>{{ v.title }}</h3>
+      <p>{{ v.description }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="about-stats">
+  <div class="stat-item" *ngFor="let s of stats">
+    <span class="stat-item__value">{{ s.value }}</span>
+    <span class="stat-item__label">{{ s.label }}</span>
+  </div>
+</section>
